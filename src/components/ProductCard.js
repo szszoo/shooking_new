@@ -39,7 +39,7 @@ const styles = {
     flexGrow: 1,
   },
   brand: {
-    margin: '17px 0 7px 0',
+    margin: '10px 0 7px 0',
     fontWeight: '600',
     fontSize: '14px',
   },

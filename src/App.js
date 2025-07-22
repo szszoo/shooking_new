@@ -3,40 +3,48 @@ import React from 'react';
 import ProductCard from './components/ProductCard';
 import Header from './components/Header';
 
+// ✅ 1. 이미지 불러오기 (파일명과 경로가 정확해야 함)
+import shoes01 from './assets/shoes_01.png';
+import shoes02 from './assets/shoes_02.png';
+import shoes03 from './assets/shoes_03.png';
+import shoes04 from './assets/shoes_04.png';
+import shoes05 from './assets/shoes_05.png';
+import shoes06 from './assets/shoes_06.png';
+
 function App() {
   const products = [
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발1',
+      image: shoes01,
       brand: '브랜드A',
       description: '편안하고 착용감이 좋은 신발',
       price: 35000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발2',
+      image: shoes02,
       brand: '브랜드A',
       description: '힙한 컬러가 매력적인 신발',
       price: 25000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발3',
+      image: shoes03,
       brand: '브랜드B',
       description: '편안하고 착용감이 좋은 신발',
       price: 35000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발4',
+      image: shoes04,
       brand: '브랜드B',
       description: '힙한 컬러가 매력적인 신발',
       price: 35000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발5',
+      image: shoes05,
       brand: '브랜드C',
       description: '편안하고 착용감이 좋은 신발',
       price: 52000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발6',
+      image: shoes06,
       brand: '브랜드C',
       description: '힙한 컬러가 매력정니 신발',
       price: 35000,
