@@ -3,44 +3,51 @@ import React from 'react';
 import ProductCard from './components/ProductCard';
 import Header from './components/Header';
 
+import shoes1 from './assets/shoes_01.png';
+import shoes2 from './assets/shoes_02.png';
+import shoes3 from './assets/shoes_03.png';
+import shoes4 from './assets/shoes_04.png';
+import shoes5 from './assets/shoes_05.png';
+import shoes6 from './assets/shoes_06.png';
+
 function App() {
   const products = [
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발1',
+      image: shoes1,
       brand: '브랜드A',
       description: '편안하고 착용감이 좋은 신발',
       price: 35000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발2',
+      image: shoes2,
       brand: '브랜드A',
       description: '힙한 컬러가 매력적인 신발',
       price: 25000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발3',
+      image: shoes3,
       brand: '브랜드B',
       description: '편안하고 착용감이 좋은 신발',
       price: 35000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발4',
+      image: shoes4,
       brand: '브랜드B',
       description: '힙한 컬러가 매력적인 신발',
       price: 35000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발5',
+      image: shoes5,
       brand: '브랜드C',
       description: '편안하고 착용감이 좋은 신발',
       price: 52000,
     },
     {
-      image: 'https://via.placeholder.com/184x120.png?text=신발6',
+      image: shoes6,
       brand: '브랜드C',
-      description: '힙한 컬러가 매력정니 신발',
+      description: '힙한 컬러가 매력적인 신발',
       price: 35000,
-    }
+    },
   ];
 
   return (
@@ -48,7 +55,7 @@ function App() {
       <Header />
       <div style={styles.titleArea}>
         <h2 style={styles.title}>신발 상품 목록</h2>
-        <p style={styles.subtitle}>현재 6개의 상품이 있습니다.</p>
+        <p style={styles.subtitle}>현재 {products.length}개의 상품이 있습니다.</p>
       </div>
       <div style={styles.cardList}>
         {products.map((p, index) => (

@@ -9,10 +9,7 @@ const ProductCard = ({ image, brand, description, price }) => {
         <h3 style={styles.brand}>{brand}</h3>
         <p style={styles.description}>{description}</p>
         <p style={styles.price}>{price.toLocaleString()}원</p>
-        <div style={styles.buttonContainer}>
-          <button style={styles.cartButton}>담기</button>
-          <button style={styles.buyButton}>구매</button>
-        </div>
+        <button style={styles.button}>담기</button>
       </div>
     </div>
   );
@@ -42,7 +39,7 @@ const styles = {
     flexGrow: 1,
   },
   brand: {
-    margin: '17px 0 7px 0',
+    margin: '10px 0 7px 0',
     fontWeight: '600',
     fontSize: '14px',
   },
@@ -59,25 +56,11 @@ const styles = {
     fontSize: '14px',
     margin: '0 0 8px 0',
   },
-  buttonContainer: {
-    display: 'flex',
-    gap: '8px',
-  },
-  cartButton: {
+  button: {
     padding: '4.5px 12px',
     border: 'none',
     backgroundColor: '#000',
     color: '#fff',
-    borderRadius: '15px',
-    fontSize: '12px',
-    cursor: 'pointer',
-    alignSelf: 'flex-start',
-  },
-  buyButton: {
-    padding: '4.5px 12px',
-    border: 'none',
-    backgroundColor: '#ffef54',
-    color: '#000',
     borderRadius: '15px',
     fontSize: '12px',
     cursor: 'pointer',
