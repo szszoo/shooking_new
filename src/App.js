@@ -1,5 +1,5 @@
 // src/App.js
-import React from 'react';
+/*import React from 'react';
 import ProductCard from './components/ProductCard';
 import Header from './components/Header';
 
@@ -97,5 +97,18 @@ const styles = {
     paddingBottom: '32px',
   },
 };
+
+export default App;*/
+// src/App.js
+import React from 'react';
+import PaymentFlow from './components/PaymentFlow';
+
+function App() {
+  return (
+    <div className="App min-h-screen bg-gray-100 flex items-center justify-center p-4">
+      <PaymentFlow />
+    </div>
+  );
+}
 
 export default App;
