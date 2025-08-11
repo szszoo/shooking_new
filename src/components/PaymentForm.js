@@ -1,21 +1,18 @@
-// components/PaymentForm.js
 import React, { useState } from 'react';
+import './PaymentForm.css';
 import CardNumberInput from './CardNumberInput';
 import ExpiryDateInput from './ExpiryDateInput';
 import CardHolderNameInput from './CardHolderNameInput';
 import SecurityCodeInput from './SecurityCodeInput';
 import CardPasswordInput from './CardPasswordInput';
-import CardList from './CardList';
 import AddCardButton from './AddCardButton';
-import PurchaseButton from './PurchaseButton';
 
-const PaymentForm = () => {
+const PaymentForm = ({ onSubmit, onCancel }) => {
   const [cardNumber, setCardNumber] = useState('');
   const [expiry, setExpiry] = useState('');
   const [name, setName] = useState('');
   const [cvc, setCvc] = useState('');
   const [password, setPassword] = useState('');
-  const [cards, setCards] = useState([]);
 
   const isFormValid = () => {
     const numberValid = /^\d{4}-\d{4}-\d{4}-\d{4}$/.test(cardNumber);
@@ -26,40 +23,34 @@ const PaymentForm = () => {
     return numberValid && expiryValid && nameValid && cvcValid && passwordValid;
   };
 
-  const handleAddCard = () => {
-    if (!isFormValid()) {
-      alert('모든 필드를 정확히 입력해주세요.');
-      return;
-    }
-    const exists = cards.some((c) => c.cardNumber === cardNumber);
-    if (exists) {
-      alert('이미 등록된 카드입니다.');
-      return;
-    }
-    setCards([...cards, { cardNumber, expiry }]);
-    setCardNumber('');
-    setExpiry('');
-    setName('');
-    setCvc('');
-    setPassword('');
-  };
-
-  const handlePurchase = () => {
-    alert('결제가 완료되었습니다.');
+  const handleSubmit = () => {
+    if (!isFormValid()) return;
+    // 민감정보는 리스트에 저장하지 않음(cvc, password 제외)
+    onSubmit && onSubmit({ cardNumber, expiry, name });
   };
 
   return (
-    <div className="max-w-md mx-auto p-4 bg-white rounded shadow">
+    <div className="payment-form-wrapper">
+      {/* 우측 상단 닫기(X) */}
+      <button
+        className="close-button"
+        aria-label="닫기"
+        onClick={onCancel}
+      >
+        ×
+      </button>
+
+      <h2 className="form-title">카드 정보 입력</h2>
+
       <CardNumberInput value={cardNumber} onChange={setCardNumber} />
       <ExpiryDateInput value={expiry} onChange={setExpiry} />
       <CardHolderNameInput value={name} onChange={setName} />
       <SecurityCodeInput value={cvc} onChange={setCvc} />
       <CardPasswordInput value={password} onChange={setPassword} />
-      <div className="flex justify-between mt-4">
-        <AddCardButton onClick={handleAddCard} />
-        <PurchaseButton disabled={!isFormValid()} onClick={handlePurchase} />
+
+      <div className="btn-row">
+        <AddCardButton onClick={handleSubmit} disabled={!isFormValid()} />
       </div>
-      <CardList cards={cards} />
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import React from 'react';
+import './CardPasswordInput.css'; // CSS 파일 import
 
 const CardPasswordInput = ({ value, onChange }) => {
   const handleChange = (e) => {
@@ -7,14 +8,14 @@ const CardPasswordInput = ({ value, onChange }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label className="text-sm text-gray-600">카드 비밀번호 (앞 2자리)</label>
+    <div className="pw-input">
+      <label className="pw-label">카드 비밀번호 (앞 2자리)</label>
       <input
         type="password"
         value={value}
         onChange={handleChange}
         placeholder="••"
-        className="border p-2 rounded-md w-full"
+        className="pw-field"
         maxLength={2}
       />
     </div>

@@ -1,7 +1,7 @@
 // src/components/ProductCard.js
 import React from 'react';
 
-const ProductCard = ({ image, brand, description, price }) => {
+const ProductCard = ({ image, brand, description, price, onPurchase, onAddToCart }) => {
   return (
     <div style={styles.card}>
       <img src={image} alt={brand} style={styles.image} />
@@ -9,7 +9,24 @@ const ProductCard = ({ image, brand, description, price }) => {
         <h3 style={styles.brand}>{brand}</h3>
         <p style={styles.description}>{description}</p>
         <p style={styles.price}>{price.toLocaleString()}원</p>
-        <button style={styles.button}>담기</button>
+
+        {/* 버튼 영역 */}
+        <div style={styles.buttonContainer}>
+          <button
+            style={styles.button}
+            onClick={onAddToCart}
+            type="button"
+          >
+            담기
+          </button>
+          <button
+            style={{ ...styles.button, backgroundColor: '#FFEF64', color: '#000' }}
+            onClick={onPurchase}
+            type="button"
+          >
+            구매
+          </button>
+        </div>
       </div>
     </div>
   );
@@ -56,6 +73,10 @@ const styles = {
     fontSize: '14px',
     margin: '0 0 8px 0',
   },
+  buttonContainer: {
+    display: 'flex',
+    gap: '6px',
+  },
   button: {
     padding: '4.5px 12px',
     border: 'none',
@@ -64,7 +85,6 @@ const styles = {
     borderRadius: '15px',
     fontSize: '12px',
     cursor: 'pointer',
-    alignSelf: 'flex-start',
   },
 };
 

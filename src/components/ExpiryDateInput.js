@@ -1,4 +1,5 @@
 import React from 'react';
+import './ExpiryDateInput.css'; // CSS 파일 연결
 
 const ExpiryDateInput = ({ value, onChange }) => {
   const handleChange = (e) => {
@@ -10,15 +11,15 @@ const ExpiryDateInput = ({ value, onChange }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label className="text-sm text-gray-600">유효기간</label>
+    <div className="expiry-input">
+      <label className="expiry-label">유효기간</label>
       <input
         type="text"
         value={value}
         onChange={handleChange}
         placeholder="MM/YY"
         maxLength={5}
-        className="border p-2 rounded-md w-full"
+        className="expiry-field"
       />
     </div>
   );

@@ -1,4 +1,5 @@
 import React from 'react';
+import './SecurityCodeInput.css'; // CSS 파일 import
 
 const SecurityCodeInput = ({ value, onChange }) => {
   const handleChange = (e) => {
@@ -7,14 +8,14 @@ const SecurityCodeInput = ({ value, onChange }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label className="text-sm text-gray-600">보안 코드 (CVC)</label>
+    <div className="cvc-input">
+      <label className="cvc-label">보안 코드 (CVC)</label>
       <input
         type="password"
         value={value}
         onChange={handleChange}
         placeholder="•••"
-        className="border p-2 rounded-md w-full"
+        className="cvc-field"
         maxLength={4}
       />
     </div>
