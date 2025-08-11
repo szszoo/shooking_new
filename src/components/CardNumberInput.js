@@ -1,4 +1,5 @@
 import React from 'react';
+import './CardNumberInput.css'; // 새 CSS 파일 연결
 
 const CardNumberInput = ({ value, onChange }) => {
   const handleChange = (e) => {
@@ -8,14 +9,14 @@ const CardNumberInput = ({ value, onChange }) => {
   };
 
   return (
-    <div className="mb-4">
-      <label className="text-sm text-gray-600">카드 번호</label>
+    <div className="card-number-input">
+      <label className="card-number-label">카드 번호</label>
       <input
         type="text"
         value={value}
         onChange={handleChange}
         placeholder="1234-5678-9012-3456"
-        className="border p-2 rounded-md w-full"
+        className="card-number-field"
         maxLength={19}
       />
     </div>
