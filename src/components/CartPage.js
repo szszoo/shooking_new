@@ -1,17 +1,22 @@
 // src/components/CartPage.js
 import React from 'react';
+import CartItem from './CartItem';
 
 const CartPage = ({ cart, setCart, onBack, onCheckout }) => {
   const inc = (id) =>
-    setCart((prev) => prev.map((it) => (it.id === id ? { ...it, qty: it.qty + 1 } : it)));
+    setCart((prev) =>
+      prev.map((it) => (it.id === id ? { ...it, qty: it.qty + 1 } : it))
+    );
   const dec = (id) =>
     setCart((prev) =>
-      prev.map((it) => (it.id === id ? { ...it, qty: Math.max(1, it.qty - 1) } : it))
+      prev.map((it) =>
+        it.id === id ? { ...it, qty: Math.max(1, it.qty - 1) } : it
+      )
     );
   const removeItem = (id) => setCart((prev) => prev.filter((it) => it.id !== id));
 
   const subtotal = cart.reduce((s, it) => s + it.price * it.qty, 0);
-  const shipping = cart.length > 100000 ? 3000 : 0; // 시안: 고정 3,000원
+  const shipping = cart.length > 100000 ? 3000 : 0;
   const total = subtotal + shipping;
 
   return (
@@ -24,21 +29,16 @@ const CartPage = ({ cart, setCart, onBack, onCheckout }) => {
 
       <div style={styles.list}>
         {cart.map((item) => (
-          <div key={item.id} style={styles.row}>
-            <img src={item.image} alt={item.brand} style={styles.thumb} />
-            <div style={styles.info}>
-              <div style={styles.brand}>{item.brand}</div>
-              <div style={styles.price}>{item.price.toLocaleString()}원</div>
-
-              <div style={styles.qtyArea}>
-                <button style={styles.qtyBtn} onClick={() => dec(item.id)}>−</button>
-                <span style={styles.qtyText}>{item.qty}</span>
-                <button style={styles.qtyBtn} onClick={() => inc(item.id)}>＋</button>
-              </div>
-            </div>
-
-            <button style={styles.remove} onClick={() => removeItem(item.id)}>×</button>
-          </div>
+          <CartItem
+            key={item.id}
+            image={item.image}
+            brand={item.brand}
+            price={item.price}
+            qty={item.qty}
+            onInc={() => inc(item.id)}
+            onDec={() => dec(item.id)}
+            onRemove={() => removeItem(item.id)}
+          />
         ))}
       </div>
 
@@ -86,40 +86,6 @@ const styles = {
   title: { margin: 0, fontSize: 24 },
   caption: { margin: '6px 0 16px', color: '#666', fontSize: 13 },
   list: { display: 'flex', flexDirection: 'column', gap: 12 },
-  row: {
-    display: 'flex',
-    alignItems: 'center',
-    background: '#fff',
-    borderRadius: 12,
-    padding: 12,
-    boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
-    position: 'relative',
-  },
-  thumb: { width: 108, height: 108, objectFit: 'cover', borderRadius: 10 },
-  info: { marginLeft: 12, display: 'flex', flexDirection: 'column', gap: 6 },
-  brand: { fontSize: 14, color: '#444' },
-  price: { fontSize: 16, fontWeight: 800 },
-  qtyArea: { display: 'flex', alignItems: 'center', gap: 10, marginTop: 6 },
-  qtyBtn: {
-    width: 28,
-    height: 28,
-    borderRadius: 14,
-    border: 'none',
-    background: '#eee',
-    fontSize: 18,
-    cursor: 'pointer',
-  },
-  qtyText: { minWidth: 16, textAlign: 'center', fontSize: 14 },
-  remove: {
-    position: 'absolute',
-    right: 10,
-    top: 8,
-    border: 'none',
-    background: 'transparent',
-    fontSize: 20,
-    cursor: 'pointer',
-    color: '#aaa',
-  },
   summary: {
     background: '#fff',
     borderRadius: 12,

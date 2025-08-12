@@ -43,7 +43,7 @@ function App() {
 
   return (
     <div style={styles.page}>
-      {/* TopBar를 모든 화면에서 쓰되, 버튼 토글 */}
+      {/* TopBar 화면별 토글 */}
       {view === 'shop' && (
         <TopBar
           showBack={false}
@@ -93,7 +93,7 @@ function App() {
                 onAddToCart={() => addToCart(p)}
                 onPurchase={() => {
                   addToCart(p);
-                  setView('cart');
+                  setView('payment'); // ✅ 구매 버튼 → 바로 결제 모듈 이동
                 }}
               />
             ))}

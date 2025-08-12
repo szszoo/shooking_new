@@ -7,25 +7,22 @@ const PaymentFlow = ({ onClose }) => {
   const [step, setStep] = useState(1); // 1: 카드 리스트, 2: 입력
   const [cardList, setCardList] = useState([]);
 
+  const goInput = () => setStep(2);
+
   return (
     <div style={{ padding: 16 }}>
       {step === 1 && (
         <PaymentMain
           cards={cardList}
-          onAddClick={() => setStep(2)}
+          onAddClick={goInput}               // ✅ 분명히 전달
+          onPay={(card) => alert(`**** ${card.cardNumber.slice(-4)} 결제 진행`)}
         />
       )}
 
       {step === 2 && (
         <PaymentForm
-          onCancel={() => {        // X: 모듈 닫기
-            setStep(1);
-            onClose && onClose();
-          }}
-          onSubmit={(card) => {    // 작성완료: 모듈 안에 머물기
-            setCardList([...cardList, card]);
-            setStep(1);
-          }}
+          onCancel={() => { setStep(1); onClose && onClose(); }}
+          onSubmit={(card) => { setCardList([...cardList, card]); setStep(1); }}
         />
       )}
     </div>
