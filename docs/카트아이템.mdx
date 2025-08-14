@@ -1,46 +1,37 @@
-import { Meta, Story, Canvas, ArgsTable, Description } from '@storybook/blocks';
-import CartItem from './CartItem';
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Canvas } from '@storybook/blocks';
 import * as CartItemStories from './CartItem.stories';
 
-<Meta title="Components/CartItem/Docs" component={CartItem} />
+<Meta of={CartItemStories} />
 
 # CartItem 컴포넌트
+<Subtitle>장바구니의 개별 상품 정보 + 수량 조절/삭제</Subtitle>
 
 <Description>
-`CartItem`은 장바구니 페이지에서 개별 상품 정보를 표시하고 수량 조절, 삭제 기능을 제공하는 컴포넌트입니다.
+`CartItem`은 이미지, 브랜드, 가격, 수량을 표시하고 `onInc`, `onDec`, `onRemove` 콜백으로 상호작용을 제공합니다.
+
+**Props 요약**
+- `image`: 상품 이미지 (URL 또는 import된 자원)
+- `brand`: 브랜드명 문자열
+- `price`: 숫자(원 단위 표기; 내부에서 `toLocaleString()` 사용)
+- `qty`: 현재 수량
+- `onInc`/`onDec`/`onRemove`: 수량 증가/감소/삭제 콜백
 </Description>
 
----
-
 ## 기본 예시
+<Primary of={CartItemStories.Default} />
 
-<Canvas>
-  <Story name="Default" args={CartItemStories.Default.args}>
-    {() => <CartItem {...CartItemStories.Default.args} />}
-  </Story>
-</Canvas>
-
----
-
-## Props
-
-<ArgsTable of={CartItem} />
-
----
+## Props 조작
+<Controls of={CartItemStories} />
 
 ## 다른 상태 예시
-
-### 수량이 3개인 경우
 <Canvas>
-  <Story name="Qty3" args={CartItemStories.Qty3.args}>
-    {() => <CartItem {...CartItemStories.Qty3.args} />}
-  </Story>
+  <CartItemStories.Qty3 />
 </Canvas>
 
----
+## 모든 스토리
+<Stories of={CartItemStories} />
 
 ## 사용 방법
-
 ```jsx
 import CartItem from './CartItem';
 import shoes1 from '../assets/shoes_01.png';
