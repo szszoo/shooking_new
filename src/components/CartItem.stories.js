@@ -1,10 +1,11 @@
 import CartItem from './CartItem';
-import { fn } from '@storybook/test'; // ✅ 추가
+import { fn } from '@storybook/test';
 import shoes1 from '../assets/shoes_01.png';
 
 export default {
   title: 'Components/CartItem',
   component: CartItem,
+  tags: ['autodocs'],
   args: {
     image: shoes1,
     brand: '브랜드A',

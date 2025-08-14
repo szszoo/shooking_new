@@ -1,0 +1,44 @@
+import { Meta, Title, Subtitle, Description, Primary, Controls, Stories, Canvas } from '@storybook/blocks';
+import * as ButtonStories from '../stories/Button.stories';
+
+<Meta of={ButtonStories} />
+
+<Title>버튼 컴포넌트</Title>
+<Subtitle>Primary/Secondary 변형과 크기 옵션을 지원하는 기본 버튼</Subtitle>
+
+<Description>
+`Button` 컴포넌트는 페이지 내에서 사용자 클릭 액션을 트리거하는 기본 UI 요소입니다.
+
+**주요 특징**
+- `primary` 속성으로 Primary/Secondary 스타일 전환 가능
+- `size` 속성(`small`, `medium`, `large`)으로 버튼 크기 조절 가능
+- `backgroundColor`로 배경색 커스터마이징 가능
+- 필수 속성인 `label`로 버튼에 표시될 텍스트 지정
+
+**Props**
+| Prop             | Type                              | Default   | Description |
+|------------------|-----------------------------------|-----------|-------------|
+| `primary`        | `boolean`                         | `false`   | 페이지 내 주요 액션 버튼 여부 |
+| `backgroundColor`| `string`                          | `null`    | 버튼 배경색 |
+| `size`           | `'small' \| 'medium' \| 'large'`  | `medium`  | 버튼 크기 |
+| `label`          | `string` _(required)_             | —         | 버튼에 표시할 내용 |
+| `onClick`        | `function`                        | —         | 클릭 이벤트 핸들러 |
+
+</Description>
+
+## 기본 예시
+<Primary of={ButtonStories.Primary} />
+
+## Props 조작
+<Controls of={ButtonStories} />
+
+## 추가 예시
+<Canvas>
+  <ButtonStories.Primary />
+</Canvas>
+<Canvas>
+  <ButtonStories.Disabled />
+</Canvas>
+
+## 모든 스토리
+<Stories of={ButtonStories} />
