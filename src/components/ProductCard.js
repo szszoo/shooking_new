@@ -1,10 +1,24 @@
 // src/components/ProductCard.js
 import React from 'react';
 
-const ProductCard = ({ image, brand, description, price, onPurchase, onAddToCart }) => {
+const ProductCard = ({ image, brand, description, price, onPurchase, onAddToCart, onClick }) => {
+  // 버튼 클릭 시 상위 onClick(카드 클릭)으로 전파 방지
+  const stop = (e) => e.stopPropagation();
+
   return (
-    <div style={styles.card}>
-      <img src={image} alt={brand} style={styles.image} />
+    <div
+      style={styles.card}
+      onClick={onClick}                 // ✅ 카드 전체 클릭 가능
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => (e.key === 'Enter' || e.key === ' ') && onClick && onClick()}
+    >
+      <img
+        src={image}
+        alt={brand}
+        style={styles.image}
+        onClick={onClick}              // ✅ 이미지 클릭으로도 이동
+      />
       <div style={styles.textContainer}>
         <h3 style={styles.brand}>{brand}</h3>
         <p style={styles.description}>{description}</p>
@@ -14,14 +28,14 @@ const ProductCard = ({ image, brand, description, price, onPurchase, onAddToCart
         <div style={styles.buttonContainer}>
           <button
             style={styles.button}
-            onClick={onAddToCart}
+            onClick={(e) => { stop(e); onAddToCart && onAddToCart(); }}
             type="button"
           >
             담기
           </button>
           <button
             style={{ ...styles.button, backgroundColor: '#FFEF64', color: '#000' }}
-            onClick={onPurchase}
+            onClick={(e) => { stop(e); onPurchase && onPurchase(); }}
             type="button"
           >
             구매
@@ -42,6 +56,7 @@ const styles = {
     backgroundColor: '#fff',
     display: 'flex',
     flexDirection: 'column',
+    cursor: 'pointer', // ✅ 클릭 affordance
   },
   image: {
     width: '184px',
