@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/shooking_new/static/css/main.c70c0543.css",
+    "main.js": "/shooking_new/static/js/main.b9782093.js",
+    "static/js/453.98bb53cb.chunk.js": "/shooking_new/static/js/453.98bb53cb.chunk.js",
+    "static/media/shoes_01.jpg": "/shooking_new/static/media/shoes_01.ac908703827284bbd4e1.jpg",
+    "static/media/shoes_05.jpg": "/shooking_new/static/media/shoes_05.0e7eeb38da32a352358b.jpg",
+    "static/media/related_03.jpg": "/shooking_new/static/media/related_03.54b76442f959a00df1ef.jpg",
+    "static/media/shoes_03.jpg": "/shooking_new/static/media/shoes_03.b77a564a47c63759f764.jpg",
+    "static/media/shoes_06.jpg": "/shooking_new/static/media/shoes_06.04119df0ecda92aebf4f.jpg",
+    "static/media/related_02.jpg": "/shooking_new/static/media/related_02.824eda76e88ee9b799d0.jpg",
+    "static/media/related_01.jpg": "/shooking_new/static/media/related_01.ed05b8c915ade322ac7a.jpg",
+    "static/media/shoes_02.jpg": "/shooking_new/static/media/shoes_02.ed05b8c915ade322ac7a.jpg",
+    "static/media/shoes_04.jpg": "/shooking_new/static/media/shoes_04.ad0b2fe885cc16270bfd.jpg",
+    "index.html": "/shooking_new/index.html",
+    "main.c70c0543.css.map": "/shooking_new/static/css/main.c70c0543.css.map",
+    "main.b9782093.js.map": "/shooking_new/static/js/main.b9782093.js.map",
+    "453.98bb53cb.chunk.js.map": "/shooking_new/static/js/453.98bb53cb.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c70c0543.css",
+    "static/js/main.b9782093.js"
+  ]
+}
