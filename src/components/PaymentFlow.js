@@ -4,14 +4,7 @@ import PaymentMain from './PaymentMain';
 import PaymentForm from './PaymentForm';
 import PaymentDone from './PaymentDone';
 
-console.log('PaymentDone typeof:', typeof PaymentDone);
-
-const PaymentFlow = ({
-  onClose,
-  // 장바구니 정보가 상위에서 내려온다면 props로 받도록 설계 (없으면 기본값 0)
-  itemCount = 0,
-  total = 0,
-}) => {
+const PaymentFlow = ({ onClose, itemCount = 0, total = 0, onPaid }) => {
   // 1: 카드 리스트, 2: 카드 입력, 3: 결제 완료
   const [step, setStep] = useState(1);
   const [cardList, setCardList] = useState([]);
@@ -22,6 +15,7 @@ const PaymentFlow = ({
   const handlePay = (card) => {
     // 여기서 결제 로직(실결제/검증 등)을 넣을 수 있음. 지금은 화면 전환만.
     setSelectedCard(card);
+    if (onPaid) onPaid();     // ✅ 부모에게 "결제 완료" 알림 → 장바구니 비우기 등 수행
     setStep(3);
   };
 
@@ -60,6 +54,7 @@ const PaymentFlow = ({
           itemCount={itemCount}
           total={total}
           onGoShop={handleGoShop}
+          showHeader={false}
         />
       )}
     </div>

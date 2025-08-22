@@ -7,12 +7,12 @@ import TopBar from './components/TopBar';
 import ProductDetail from './components/ProductDetail';
 import PaymentDone from './components/PaymentDone';
 
-import shoes1 from './assets/shoes_01.png';
-import shoes2 from './assets/shoes_02.png';
-import shoes3 from './assets/shoes_03.png';
-import shoes4 from './assets/shoes_04.png';
-import shoes5 from './assets/shoes_05.png';
-import shoes6 from './assets/shoes_06.png';
+import shoes1 from './assets/shoes_01.jpg';
+import shoes2 from './assets/shoes_02.jpg';
+import shoes3 from './assets/shoes_03.jpg';
+import shoes4 from './assets/shoes_04.jpg';
+import shoes5 from './assets/shoes_05.jpg';
+import shoes6 from './assets/shoes_06.jpg';
 
 function App() {
   // shop | cart | payment | detail | paymentDone
@@ -167,7 +167,7 @@ const styles = {
     fontFamily: 'sans-serif',
     backgroundColor: '#fafafa',
     padding: '0 16px',
-    minHeight: '100vh',
+    minHeight: '100vh'
   },
   titleArea: { padding: '24px 0 12px' },
   title: { margin: 0, fontSize: '20px' },

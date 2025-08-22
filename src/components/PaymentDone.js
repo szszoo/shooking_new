@@ -1,17 +1,24 @@
 // src/components/PaymentDone.js
 import React from 'react';
 
-export default function PaymentDone({ itemCount = 0, total = 0, onGoShop }) {
+export default function PaymentDone({
+  itemCount = 0,
+  total = 0,
+  onGoShop,
+  showHeader = true, // ✅ 헤더 표시 여부
+}) {
   return (
     <div style={S.wrap}>
-      <div style={S.topBar} />
+      {/* ✅ 상단바는 showHeader일 때만 표시 */}
+      {showHeader && <div style={S.topBar} />}
+
       <div style={S.body}>
         <h2 style={S.title}>결제 완료!</h2>
         <p style={S.sub}>총 {itemCount}개의 상품을 구매하셨습니다.</p>
 
         <div style={S.totalBox}>
           <div style={S.totalLabel}>총 결제 금액</div>
-          <div style={S.totalPrice}>{total.toLocaleString()}원</div>
+          <div style={S.totalPrice}>{Number(total).toLocaleString()}원</div>
         </div>
 
         <button style={S.button} type="button" onClick={onGoShop}>
